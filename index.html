@@ -4,31 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rifas Santarém Premium</title>
+    <title>Compre sua Rifa - Santarém</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>🎉 Participe da Rifa Premium de Santarém! 🎉</h1>
-        <p>Compre seus números e concorra a prêmios incríveis. Toda rifa ajuda a movimentar a economia local!</p>
+        <p>Garanta já seus números da sorte! Apenas R$10 cada.</p>
     </header>
 
     <section class="anuncio">
-        <h2>🔥 Sorteio Especial de R$ 10.000,00 🔥</h2>
-        <p>Garanta já seu número! Apenas R$10 por número. Chance real de ganhar!</p>
+        <h2>💰 Prêmio total: R$ 10.000,00 💰</h2>
     </section>
 
     <section class="comprar">
-        <h2>Compre Agora</h2>
-        <form action="https://seu-link-de-pagamento.com" method="get">
-            <label for="qtd">Quantos números você quer?</label><br>
-            <input type="number" id="qtd" name="quantidade" min="1" max="1000" required><br>
-            <button type="submit">Comprar com PIX</button>
-        </form>
+        <h2>Comprar com PIX</h2>
+        <label for="qtd">Quantos números deseja?</label><br>
+        <input type="number" id="qtd" min="1" max="100" value="1"><br><br>
+        <button onclick="gerarPagamento()">Gerar PIX</button>
+
+        <div id="pix-area" style="display:none; margin-top: 30px;">
+            <h3>Total: R$ <span id="valor-total"></span></h3>
+            <p>Copie o código abaixo e pague via PIX:</p>
+            <textarea id="pix-copia" readonly style="width:90%;height:80px;"></textarea><br>
+            <button onclick="copiarPIX()">📋 Copiar Código PIX</button>
+        </div>
     </section>
 
     <footer>
-        <p>© 2025 Rifas Santarém. Todos os direitos reservados. Instagram: @rifasantarem</p>
+        <p>© 2025 Rifas Santarém • Instagram: @rifasantarem</p>
     </footer>
+
+    <script>
+        const chavePix = "052.273.842-74";
+        const cidade = "SANTAREM";
+        const nome = "Adria Alcione";
+        const valorUnitario = 10.00;
+
+        function gerarPagamento() {
+            const qtd = parseInt(document.getElementById("qtd").value);
+            if (isNaN(qtd) || qtd < 1) return;
+
+            const total = (valorUnitario * qtd).toFixed(2);
+            const payload = gerarPayloadPIX(total);
+            document.getElementById("valor-total").innerText = total;
+            document.getElementById("pix-copia").value = payload;
+            document.getElementById("pix-area").style.display = "block";
+        }
+
+        function gerarPayloadPIX(valor) {
+            let v = valor;
+            let payload = "00020126" +
+                          "0014br.gov.bcb.pix01" + chavePix.length.toString().padStart(2, '0') + chavePix +
+                          "52040000530398654" +
+                          v.length.toString().padStart(2, '0') + v +
+                          "5802BR59" +
+                          nome.length.toString().padStart(2, '0') + nome +
+                          "60" + cidade.length.toString().padStart(2, '0') + cidade +
+                          "62050406RIFA10";
+            return payload + "6304FAKE"; // sem CRC real
+        }
+
+        function copiarPIX() {
+            const pix = document.getElementById("pix-copia");
+            pix.select();
+            document.execCommand("copy");
+            alert("Código PIX copiado!");
+        }
+    </script>
 </body>
 </html>
