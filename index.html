@@ -1,76 +1,145 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compre sua Rifa - Santarém</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clube Digital Pro</title>
+  <style>
+    :root {
+      --primaria: #0d47a1;
+      --secundaria: #1976d2;
+      --clara: #e3f2fd;
+      --texto: #ffffff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: var(--clara);
+      color: var(--primaria);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primaria);
+      color: var(--texto);
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: var(--secundaria);
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: var(--texto);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section.hero {
+      background: var(--clara);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    section.hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    section.hero p {
+      font-size: 1.2rem;
+    }
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .card h3 {
+      margin: 10px 0;
+    }
+    .card p {
+      font-size: 0.9rem;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--primaria);
+      color: var(--texto);
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--secundaria);
+      color: var(--texto);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🎉 Participe da Rifa Premium de Santarém! 🎉</h1>
-        <p>Garanta já seus números da sorte! Apenas R$10 cada.</p>
-    </header>
+  <header>
+    <h1>Clube Digital Pro</h1>
+    <p>Ganhe dinheiro todos os dias com produtos digitais e físicos de alta demanda!</p>
+  </header>
 
-    <section class="anuncio">
-        <h2>💰 Prêmio total: R$ 10.000,00 💰</h2>
-    </section>
+  <nav>
+    <a href="#ebooks">E-books</a>
+    <a href="#produtos">Produtos Físicos</a>
+    <a href="https://wa.me/5593984049351" target="_blank">WhatsApp</a>
+  </nav>
 
-    <section class="comprar">
-        <h2>Comprar com PIX</h2>
-        <label for="qtd">Quantos números deseja?</label><br>
-        <input type="number" id="qtd" min="1" max="100" value="1"><br><br>
-        <button onclick="gerarPagamento()">Gerar PIX</button>
+  <section class="hero">
+    <h1>Monte sua renda automática hoje</h1>
+    <p>Produtos com alta lucratividade, entrega fácil e venda rápida. Escolha um produto abaixo e comece a faturar agora!</p>
+  </section>
 
-        <div id="pix-area" style="display:none; margin-top: 30px;">
-            <h3>Total: R$ <span id="valor-total"></span></h3>
-            <p>Copie o código abaixo e pague via PIX:</p>
-            <textarea id="pix-copia" readonly style="width:90%;height:80px;"></textarea><br>
-            <button onclick="copiarPIX()">📋 Copiar Código PIX</button>
-        </div>
-    </section>
+  <section class="produtos" id="ebooks">
+    <div class="card">
+      <img src="https://i.imgur.com/N3xrdU2.png" alt="e-book renda extra">
+      <h3>Guia da Renda Extra</h3>
+      <p>Descubra 10 formas comprovadas de faturar R$100 por dia. Baixe agora e aplique ainda hoje!</p>
+      <a href="https://drive.google.com" target="_blank">Baixar E-book</a>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/NuNRAJY.png" alt="ebook cftv">
+      <h3>Curso Básico de CFTV</h3>
+      <p>Aprenda a instalar câmeras e sistemas de segurança e comece a trabalhar na área com este guia passo a passo.</p>
+      <a href="https://drive.google.com" target="_blank">Baixar Curso</a>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2025 Rifas Santarém • Instagram: @rifasantarem</p>
-    </footer>
+  <section class="produtos" id="produtos">
+    <div class="card">
+      <img src="https://i.imgur.com/w1tCWpZ.png" alt="mini câmera wifi">
+      <h3>Mini Câmera Wi-Fi Espiã</h3>
+      <p>Segurança discreta e inteligente. Ideal para casas, escritórios e carros. Fácil de instalar.</p>
+      <a href="https://wa.me/5593984049351?text=Quero+comprar+a+Mini+C%C3%A2mera+WiFi" target="_blank">Comprar no WhatsApp</a>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/k0PyLQL.png" alt="sensor de presença">
+      <h3>Sensor de Presença com Alarme</h3>
+      <p>Proteja seu espaço com sensores inteligentes. Produto importado e lucrativo para revenda.</p>
+      <a href="https://wa.me/5593984049351?text=Tenho+interesse+no+Sensor+de+Presen%C3%A7a" target="_blank">Quero Comprar</a>
+    </div>
+  </section>
 
-    <script>
-        const chavePix = "052.273.842-74";
-        const cidade = "SANTAREM";
-        const nome = "Adria Alcione";
-        const valorUnitario = 10.00;
-
-        function gerarPagamento() {
-            const qtd = parseInt(document.getElementById("qtd").value);
-            if (isNaN(qtd) || qtd < 1) return;
-
-            const total = (valorUnitario * qtd).toFixed(2);
-            const payload = gerarPayloadPIX(total);
-            document.getElementById("valor-total").innerText = total;
-            document.getElementById("pix-copia").value = payload;
-            document.getElementById("pix-area").style.display = "block";
-        }
-
-        function gerarPayloadPIX(valor) {
-            let v = valor;
-            let payload = "00020126" +
-                          "0014br.gov.bcb.pix01" + chavePix.length.toString().padStart(2, '0') + chavePix +
-                          "52040000530398654" +
-                          v.length.toString().padStart(2, '0') + v +
-                          "5802BR59" +
-                          nome.length.toString().padStart(2, '0') + nome +
-                          "60" + cidade.length.toString().padStart(2, '0') + cidade +
-                          "62050406RIFA10";
-            return payload + "6304FAKE"; // sem CRC real
-        }
-
-        function copiarPIX() {
-            const pix = document.getElementById("pix-copia");
-            pix.select();
-            document.execCommand("copy");
-            alert("Código PIX copiado!");
-        }
-    </script>
+  <footer>
+    <p>Clube Digital Pro &copy; 2025 - Desenvolvido por Rodrigo Silva</p>
+  </footer>
 </body>
 </html>
